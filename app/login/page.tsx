@@ -5,12 +5,10 @@ import Link from "next/link"
 import { Button } from "@/app/components/ui/button"
 import { Input } from "@/app/components/ui/input"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/app/components/ui/card"
-
 import { Label } from "@/app/components/ui/label"
-import { Checkbox } from "@/app/components/ui/checkbox"
 import { Package } from "lucide-react"
 
-export function LoginPage() {
+const LoginPage = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
@@ -56,12 +54,6 @@ export function LoginPage() {
                   required
                 />
               </div>
-              <div className="flex items-center space-x-2">
-                <Checkbox id="remember" />
-                <Label htmlFor="remember" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                  Remember me
-                </Label>
-              </div>
             </div>
             <Button className="w-full mt-6" type="submit">
               Sign In
@@ -89,4 +81,5 @@ export function LoginPage() {
   )
 }
 
+// Exporting the component as default
 export default LoginPage;
