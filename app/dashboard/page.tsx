@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/app/components/ui/card'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/app/components/ui/button'
 import { Package, Truck, CreditCard, MessageSquare } from 'lucide-react'
 import Link from 'next/link'
 

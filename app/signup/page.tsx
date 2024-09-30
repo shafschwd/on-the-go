@@ -2,21 +2,21 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/app/components/ui/button"
+import { Input } from "@/app/components/ui/input"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/app/components/ui/card"
 import { Label } from "@/app/components/ui/label"
-import { Checkbox } from "@/app/components/ui/checkbox"
 import { Package } from "lucide-react"
 
-export function Page() {
+const SignupPage = () => {
+  const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle login logic here
-    console.log("Login attempt with:", { email, password })
+    // Handle signup logic here
+    console.log("Signup attempt with:", { name, email, password })
   }
 
   return (
@@ -26,14 +26,25 @@ export function Page() {
           <div className="flex items-center justify-center mb-4">
             <Package className="h-12 w-12 text-primary" />
           </div>
-          <CardTitle className="text-2xl text-center">Login to On-The-Go</CardTitle>
+          <CardTitle className="text-2xl text-center">Create an Account</CardTitle>
           <CardDescription className="text-center">
-            Enter your email and password to access your account
+            Enter your details to create your On-The-Go account
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit}>
             <div className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="name">Full Name</Label>
+                <Input
+                  id="name"
+                  type="text"
+                  placeholder="John Doe"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+              </div>
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
@@ -55,31 +66,30 @@ export function Page() {
                   required
                 />
               </div>
-              <div className="flex items-center space-x-2">
-                <Checkbox id="remember" />
-                <label htmlFor="remember" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                  Remember me
-                </label>
-              </div>
             </div>
             <Button className="w-full mt-6" type="submit">
-              Sign In
+              Sign Up
             </Button>
           </form>
         </CardContent>
         <CardFooter className="flex flex-col space-y-4">
           <Button variant="outline" className="w-full">
-            Sign in with Google
+            Sign up with Google
           </Button>
           <div className="text-sm text-center">
-            Don&apos;t have an account?{" "}
-            <Link href="/signup" className="text-primary hover:underline">
-              Sign up
+            Already have an account?{" "}
+            <Link href="/login" className="text-primary hover:underline">
+              Log in
             </Link>
           </div>
           <div className="text-sm text-center">
-            <Link href="/forgot-password" className="text-primary hover:underline">
-              Forgot your password?
+            By signing up, you agree to our{" "}
+            <Link href="/terms" className="text-primary hover:underline">
+              Terms of Service
+            </Link>{" "}
+            and{" "}
+            <Link href="/privacy" className="text-primary hover:underline">
+              Privacy Policy
             </Link>
           </div>
         </CardFooter>
@@ -87,3 +97,6 @@ export function Page() {
     </div>
   )
 }
+
+// Export the component as default
+export default SignupPage;
