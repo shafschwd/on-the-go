@@ -1,101 +1,93 @@
-import Image from "next/image";
+import Link from 'next/link'
+import { Button } from '@/app/components/ui/button'
+import { ArrowRight, Package, Truck, Clock, CheckCircle } from 'lucide-react'
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="container mx-auto px-4 py-12">
+      <section className="text-center mb-16">
+        <h1 className="text-5xl font-bold mb-6">Fast and Reliable Delivery with On-The-Go</h1>
+        <p className="text-xl text-gray-600 mb-8">Get your packages delivered quickly and securely, anytime, anywhere</p>
+        <Button size="lg" className="text-lg">
+          Get Started
+          <ArrowRight className="ml-2 h-5 w-5" />
+        </Button>
+      </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-20">
+        <div className="text-center">
+          <Package className="mx-auto h-16 w-16 text-primary mb-4" />
+          <h3 className="text-2xl font-semibold mb-3">Easy Booking</h3>
+          <p className="text-gray-600">Book your delivery in just a few taps with our user-friendly interface</p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div className="text-center">
+          <Truck className="mx-auto h-16 w-16 text-primary mb-4" />
+          <h3 className="text-2xl font-semibold mb-3">Real-time Tracking</h3>
+          <p className="text-gray-600">Track your package every step of the way with our advanced GPS system</p>
+        </div>
+        <div className="text-center">
+          <Clock className="mx-auto h-16 w-16 text-primary mb-4" />
+          <h3 className="text-2xl font-semibold mb-3">On-time Delivery</h3>
+          <p className="text-gray-600">We prioritize punctuality in all our deliveries, ensuring your packages arrive on schedule</p>
+        </div>
+      </section>
+
+      <section className="mb-20">
+        <h2 className="text-3xl font-bold mb-8 text-center">How On-The-Go Works</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {[
+            { step: 1, title: "Book", description: "Choose your delivery options and schedule" },
+            { step: 2, title: "Pack", description: "Prepare your package for pickup" },
+            { step: 3, title: "Track", description: "Monitor your delivery in real-time" },
+            { step: 4, title: "Receive", description: "Your package arrives at its destination" }
+          ].map((item) => (
+            <div key={item.step} className="flex flex-col items-center text-center">
+              <div className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center text-xl font-bold mb-4">
+                {item.step}
+              </div>
+              <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+              <p className="text-gray-600">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-gray-50 rounded-lg p-8 mb-20">
+        <h2 className="text-3xl font-bold mb-6 text-center">Why Choose On-The-Go?</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {[
+            "Fastest delivery in the industry",
+            "24/7 customer support",
+            "Secure package handling",
+            "Competitive pricing",
+            "Eco-friendly delivery options",
+            "Flexible scheduling"
+          ].map((feature, index) => (
+            <div key={index} className="flex items-center">
+              <CheckCircle className="h-6 w-6 text-primary mr-3" />
+              <span className="text-lg">{feature}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="text-center mb-16">
+        <h2 className="text-4xl font-bold mb-6">Ready to go with On-The-Go?</h2>
+        <p className="text-xl text-gray-600 mb-8">Join thousands of satisfied customers who trust On-The-Go for their deliveries</p>
+        <div className="flex justify-center gap-4">
+          <Link href="/signup" passHref>
+            <Button size="lg" className="text-lg">
+              Sign Up Now
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </Link>
+          <Link href="/pricing" passHref>
+            <Button size="lg" variant="outline" className="text-lg">
+              View Pricing
+            </Button>
+          </Link>
+        </div>
+      </section>
     </div>
-  );
+  )
 }
