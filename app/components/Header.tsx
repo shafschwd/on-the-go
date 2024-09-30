@@ -18,7 +18,9 @@ export function Header() {
             <li><Link href="/support" className="text-gray-600 hover:text-gray-800">Support</Link></li>
           </ul>
         </nav>
-        <Button variant="outline">Login</Button>
+        <Link href="/login" passHref>
+          <Button variant="outline">Login</Button>
+        </Link>
       </div>
     </header>
   )
