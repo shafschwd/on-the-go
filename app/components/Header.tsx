@@ -6,7 +6,7 @@ export function Header() {
   return (
     <header className="bg-white border-b">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href="/" className="flex items-center space-x-2">
+        <Link href="/" className="flex items-center space-x-6">
           <Package className="h-8 w-8 text-primary" />
           <span className="text-2xl font-bold text-gray-800">On-The-Go</span>
         </Link>

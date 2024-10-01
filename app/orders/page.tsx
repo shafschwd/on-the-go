@@ -1,5 +1,6 @@
 import { Button } from "@/app/components/ui/button"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/app/components/table"
+import Link from "next/link"
 import { Package, Eye, Truck } from "lucide-react"
 
 const orders = [
@@ -44,9 +45,9 @@ const OrdersPage = () => {
         </TableBody>
       </Table>
       <div className="mt-8">
-        <Button>
-          <Package className="h-5 w-5 mr-2" /> Create New Order
-        </Button>
+      <Link href="/booking" passHref>
+        <Button><Package className="h-5 w-5 mr-2" /> Create New Order</Button>
+      </Link>
       </div>
     </div>
   )
