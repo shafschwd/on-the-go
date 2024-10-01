@@ -6,6 +6,7 @@ import { Input } from "@/app/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { format, addMonths, subMonths, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, isSameDay, addDays } from "date-fns"
+import Link from "next/link"
 
 const BookingPage = () => {
   const [selectedDate, setSelectedDate] = useState(new Date())
@@ -125,7 +126,9 @@ const BookingPage = () => {
                   <p className="text-sm text-gray-600">1 hr</p>
                   <p className="font-semibold">RM 35</p>
                 </div>
-                <Button className="w-full">Next</Button>
+                <Link href="/payment" passHref>
+                  <Button className="w-full">Next</Button>
+                </Link>  
               </div>
             </CardContent>
           </Card>
