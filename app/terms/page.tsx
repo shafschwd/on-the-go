@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card"
 
-export const TOSPage = () => {
+const TermsPage = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-6">Terms of Service</h1>
@@ -53,4 +53,4 @@ export const TOSPage = () => {
   )
 }
 
-export default TOSPage
+export default TermsPage
