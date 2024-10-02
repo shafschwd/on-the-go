@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@/app/components/ui/button"
 import { Input } from "@/app/components/ui/input"
@@ -8,14 +9,31 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Label } from "@/app/components/ui/label"
 import { Package } from "lucide-react"
 
-const LoginPage = () => {
+// Create a custom event for login
+const loginEvent = new Event('onLogin')
+
+export default function LoginPage() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [error, setError] = useState("")
+  const router = useRouter()
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle login logic here
-    console.log("Login attempt with:", { email, password })
+    setError("")
+
+    // Temporary login logic
+    if (email === "admin@onthego.com" && password === "admin123") {
+      localStorage.setItem("userType", "admin")
+      window.dispatchEvent(loginEvent) // Dispatch the login event
+      router.push("/")
+    } else if (email === "customer@onthego.com" && password === "customer123") {
+      localStorage.setItem("userType", "customer")
+      window.dispatchEvent(loginEvent) // Dispatch the login event
+      router.push("/")
+    } else {
+      setError("Invalid email or password")
+    }
   }
 
   return (
@@ -54,6 +72,7 @@ const LoginPage = () => {
                   required
                 />
               </div>
+              {error && <div className="text-red-500 text-sm">{error}</div>}
             </div>
             <Button className="w-full mt-6" type="submit">
               Sign In
@@ -61,9 +80,6 @@ const LoginPage = () => {
           </form>
         </CardContent>
         <CardFooter className="flex flex-col space-y-4">
-          <Button variant="outline" className="w-full">
-            Sign in with Google
-          </Button>
           <div className="text-sm text-center">
             Don&apos;t have an account?{" "}
             <Link href="/signup" className="text-primary hover:underline">
@@ -80,6 +96,3 @@ const LoginPage = () => {
     </div>
   )
 }
-
-// Exporting the component as default
-export default LoginPage;

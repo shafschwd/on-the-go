@@ -1,5 +1,5 @@
 import { Button } from "@/app/components/ui/button"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/app/components/table"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/app/components/ui/table"
 import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card"
 import { CreditCard, Download } from "lucide-react"
 

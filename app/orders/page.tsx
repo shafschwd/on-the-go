@@ -1,5 +1,5 @@
 import { Button } from "@/app/components/ui/button"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/app/components/table"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/app/components/ui/table"
 import Link from "next/link"
 import { Package, Eye, Truck } from "lucide-react"
 
