@@ -9,6 +9,7 @@ import { Label } from "@/app/components/ui/label"
 import { ChevronLeft, ChevronRight, Truck, Package } from "lucide-react"
 import { format, addMonths, subMonths, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, isSameDay } from "date-fns"
 import { useLoadScript, Autocomplete } from "@react-google-maps/api"
+import Link from "next/link"
 
 const libraries: ("places")[] = ["places"]
 
@@ -197,7 +198,9 @@ const BookingPage = () => {
                   <p className="text-sm text-gray-600">1 hr</p>
                   <p className="font-semibold">RM 35</p>
                 </div>
-                <Button className="w-full">Confirm Booking</Button>
+                <Link href="/payment" passHref>
+                  <Button className="w-full">Confirm Booking</Button>
+                </Link>
               </div>
             </CardContent>
           </Card>
