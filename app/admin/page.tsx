@@ -140,7 +140,7 @@ const AdminDashboardPage = () => {
                   <TableCell>{order.status}</TableCell>
                   <TableCell>{order.total}</TableCell>
                   <TableCell>
-                    <Button size="sm" variant="outline">View Details</Button>
+                    <Button size="sm" variant="outline">Edit Details</Button>
                   </TableCell>
                 </TableRow>
               ))}
