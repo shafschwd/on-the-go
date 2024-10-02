@@ -4,9 +4,9 @@ import Link from "next/link"
 import { Package, Eye, Truck } from "lucide-react"
 
 const orders = [
-  { id: "ORD001", date: "2023-05-15", status: "Delivered", total: "$25.99" },
-  { id: "ORD002", date: "2023-05-16", status: "In Transit", total: "$34.50" },
-  { id: "ORD003", date: "2023-05-17", status: "Processing", total: "$18.75" },
+  { id: "ORD001", date: "2024-09-15", status: "Delivered", total: "$25.99" },
+  { id: "ORD002", date: "2024-09-16", status: "In Transit", total: "$34.50" },
+  { id: "ORD003", date: "2024-09-17", status: "Processing", total: "$18.75" },
 ]
 
 const OrdersPage = () => {
@@ -35,9 +35,11 @@ const OrdersPage = () => {
                   <Button size="sm" variant="outline">
                     <Eye className="h-4 w-4 mr-1" /> View
                   </Button>
-                  <Button size="sm" variant="outline">
-                    <Truck className="h-4 w-4 mr-1" /> Track
-                  </Button>
+                  <Link href="/tracking" passHref>
+                    <Button size="sm" variant="outline">
+                      <Truck className="h-4 w-4 mr-1" /> Track
+                    </Button>
+                  </Link>
                 </div>
               </TableCell>
             </TableRow>
@@ -46,7 +48,9 @@ const OrdersPage = () => {
       </Table>
       <div className="mt-8">
       <Link href="/booking" passHref>
-        <Button><Package className="h-5 w-5 mr-2" /> Create New Order</Button>
+        <Button>
+          <Package className="h-5 w-5 mr-2" /> Create New Order
+        </Button>
       </Link>
       </div>
     </div>

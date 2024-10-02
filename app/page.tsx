@@ -8,10 +8,12 @@ export default function Home() {
       <section className="text-center mb-16">
         <h1 className="text-5xl font-bold mb-6">Fast and Reliable Delivery with On-The-Go</h1>
         <p className="text-xl text-gray-600 mb-8">Get your packages delivered quickly and securely, anytime, anywhere</p>
-        <Button size="lg" className="text-lg">
-          Get Started
-          <ArrowRight className="ml-2 h-5 w-5" />
-        </Button>
+        <Link href="/signup" passHref>
+          <Button size="lg" className="text-lg">
+            Get Started
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Button>
+        </Link>
       </section>
 
       <section className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-20">
