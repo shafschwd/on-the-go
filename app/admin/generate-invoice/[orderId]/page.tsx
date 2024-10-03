@@ -21,8 +21,8 @@ const invoiceData = {
     { id: 2, description: "Item 2", quantity: 1, price: 24.99 },
   ],
   total: 46.97,
-  date: "2023-06-01",
-  dueDate: "2023-06-15",
+  date: "2024-06-01",
+  dueDate: "2024-06-15",
 };
 
 const InvoicePage = ({ params }: { params: { orderId: string } }) => {

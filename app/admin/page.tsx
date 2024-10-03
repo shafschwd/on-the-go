@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card"
 import { Button } from "@/app/components/ui/button"
+import Link from "next/link"
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/app/components/ui/table"
 import { Package, Truck, Users, DollarSign, ArrowUp, ArrowDown, FileText } from "lucide-react"
@@ -185,10 +186,11 @@ const AdminDashboardPage = () => {
           </Table>
         </CardContent>
       </Card>
-
-      <div className="mt-6 flex justify-end">
-        <Button>View All Orders</Button>
-      </div>
+      <Link href="/booking" passHref>
+        <Button>
+          <Package className="h-5 w-5 mr-2" /> Create New Order
+        </Button>
+      </Link>
     </div>
   )
 }
