@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/ca
 import { Button } from "@/app/components/ui/button"
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/app/components/ui/table"
-import { Package, Truck, Users, DollarSign, ArrowUp, ArrowDown } from "lucide-react"
+import { Package, Truck, Users, DollarSign, ArrowUp, ArrowDown, FileText } from "lucide-react"
 
 // Mock data for charts
 const orderData = [
@@ -26,7 +26,7 @@ const recentOrders = [
   { id: "ORD005", customer: "Charlie Davis", status: "Delivered", total: "RM 29.99" },
 ]
 
-const AdminDashboardPage = () => {
+const AdminDashboard = () => {
   const router = useRouter()
 
   useEffect(() => {
@@ -35,6 +35,10 @@ const AdminDashboardPage = () => {
       router.push("/login")
     }
   }, [router])
+
+  const handleGenerateInvoice = (orderId: string) => {
+    router.push(`/admin/generate-invoice/${orderId}`)
+  }
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -140,7 +144,12 @@ const AdminDashboardPage = () => {
                   <TableCell>{order.status}</TableCell>
                   <TableCell>{order.total}</TableCell>
                   <TableCell>
-                    <Button size="sm" variant="outline">Edit Details</Button>
+                    <div className="flex space-x-2">
+                      <Button size="sm" variant="outline">Edit Details</Button>
+                      <Button size="sm" variant="outline" onClick={() => handleGenerateInvoice(order.id)}>
+                        <FileText className="h-4 w-4 mr-1" /> Generate Invoice
+                      </Button>
+                    </div>
                   </TableCell>
                 </TableRow>
               ))}
@@ -156,5 +165,4 @@ const AdminDashboardPage = () => {
   )
 }
 
-// Export the component as the default export
-export default AdminDashboardPage;
+export default AdminDashboard

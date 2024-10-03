@@ -4,9 +4,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/ca
 import { CreditCard, Download } from "lucide-react"
 
 const invoices = [
-  { id: "INV001", date: "2023-05-15", amount: "$25.99", status: "Paid" },
-  { id: "INV002", date: "2023-05-16", amount: "$34.50", status: "Pending" },
-  { id: "INV003", date: "2023-05-17", amount: "$18.75", status: "Paid" },
+  { id: "INV001", date: "2024-09-15", amount: "$25.99", status: "Paid" },
+  { id: "INV002", date: "2024-09-16", amount: "$34.50", status: "Pending" },
+  { id: "INV003", date: "2024-09-17", amount: "$18.75", status: "Paid" },
 ]
 
 const PaymentPage = () => {
