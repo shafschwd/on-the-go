@@ -1,12 +1,19 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card"
 import { Button } from "@/app/components/ui/button"
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/app/components/ui/table"
 import { Package, Truck, Users, DollarSign, ArrowUp, ArrowDown, FileText } from "lucide-react"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/app/components/ui/select"
 
 // Mock data for charts
 const orderData = [
@@ -18,6 +25,7 @@ const orderData = [
   { name: 'Jun', orders: 600 },
 ]
 
+// Updated mock data for recent orders with a status field
 const recentOrders = [
   { id: "ORD001", customer: "John Doe", status: "Delivered", total: "RM 25.99" },
   { id: "ORD002", customer: "Jane Smith", status: "In Transit", total: "RM 34.50" },
@@ -26,8 +34,9 @@ const recentOrders = [
   { id: "ORD005", customer: "Charlie Davis", status: "Delivered", total: "RM 29.99" },
 ]
 
-const AdminDashboard = () => {
+const AdminDashboardPage = () => {
   const router = useRouter()
+  const [orders, setOrders] = useState(recentOrders)
 
   useEffect(() => {
     const userType = localStorage.getItem("userType")
@@ -38,6 +47,12 @@ const AdminDashboard = () => {
 
   const handleGenerateInvoice = (orderId: string) => {
     router.push(`/admin/generate-invoice/${orderId}`)
+  }
+
+  const handleStatusChange = (orderId: string, newStatus: string) => {
+    setOrders(orders.map(order => 
+      order.id === orderId ? { ...order, status: newStatus } : order
+    ))
   }
 
   return (
@@ -137,19 +152,32 @@ const AdminDashboard = () => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {recentOrders.map((order) => (
+              {orders.map((order) => (
                 <TableRow key={order.id}>
                   <TableCell>{order.id}</TableCell>
                   <TableCell>{order.customer}</TableCell>
-                  <TableCell>{order.status}</TableCell>
+                  <TableCell>
+                    <Select
+                      value={order.status}
+                      onValueChange={(value) => handleStatusChange(order.id, value)}
+                    >
+                      <SelectTrigger className="w-[180px]">
+                        <SelectValue placeholder="Select status" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="Pending">Pending</SelectItem>
+                        <SelectItem value="Processing">Processing</SelectItem>
+                        <SelectItem value="In Transit">In Transit</SelectItem>
+                        <SelectItem value="Delivered">Delivered</SelectItem>
+                        <SelectItem value="Cancel">Cancel</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </TableCell>
                   <TableCell>{order.total}</TableCell>
                   <TableCell>
-                    <div className="flex space-x-2">
-                      <Button size="sm" variant="outline">Edit Details</Button>
-                      <Button size="sm" variant="outline" onClick={() => handleGenerateInvoice(order.id)}>
-                        <FileText className="h-4 w-4 mr-1" /> Generate Invoice
-                      </Button>
-                    </div>
+                    <Button size="sm" variant="outline" onClick={() => handleGenerateInvoice(order.id)}>
+                      <FileText className="h-4 w-4 mr-1" /> Generate Invoice
+                    </Button>
                   </TableCell>
                 </TableRow>
               ))}
@@ -165,4 +193,4 @@ const AdminDashboard = () => {
   )
 }
 
-export default AdminDashboard
+export default AdminDashboardPage
